@@ -8,7 +8,7 @@ FROM (
     *
   FROM
     [githubarchive:year.2015],
-    TABLE_DATE_RANGE([githubarchive:day.], TIMESTAMP('2016-01-01'), CURRENT_TIMESTAMP()) ) AS events
+    TABLE_DATE_RANGE([githubarchive:day.], TIMESTAMP('2016-01-01'), CURRENT_TIMESTAMP())) AS events
 JOIN (
   SELECT
     repo.id AS id,
@@ -18,7 +18,7 @@ JOIN (
     [githubarchive:year.2015],
     TABLE_DATE_RANGE([githubarchive:day.], TIMESTAMP('2016-01-01'), CURRENT_TIMESTAMP())
   WHERE
-    type = 'PublicEvent' ) AS releases
+    type = 'PublicEvent') AS releases
 ON
   releases.id = events.repo.id
 WHERE
